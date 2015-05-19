@@ -15,8 +15,9 @@
   3. How to detect "Rotate".
   4. (Vibration feedback).
 
+*If you want to get whole project, just open your terminal and enter following command
 ```
-This is a code block
+git clone 
 ```
 
 ###### This project is built by visual studio 2012 in C++ by Po-Chih Huang.
