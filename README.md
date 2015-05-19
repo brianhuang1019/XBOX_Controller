@@ -1,6 +1,7 @@
 # XBOX_Controller
 
-# Main goal: Use XBOX360 controller to improve control experience of PIONEER, which's a robot in my lab and recently controlled by            computers keyboards. Since there're just 4 directions on the keyboard, we can enjoy exquisiter control using XBOX               controller. Furthermore, some additional novel functionalities are available with XBOX controller.
+# Main goal: 
+  Use XBOX360 controller to improve control experience of PIONEER, which's a robot in my lab and recently controlled by           computers keyboards. Since there're just 4 directions on the keyboard, we can enjoy exquisiter control using XBOX               controller. Furthermore, some additional novel functionalities are available with XBOX controller.
 
 # Completed things:
   1. Register a window class.
