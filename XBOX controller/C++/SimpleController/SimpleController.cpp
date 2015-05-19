@@ -10,6 +10,7 @@
 
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
+#include <commctrl.h>
 #include <stdio.h>
 #include <commdlg.h>
 #include <basetsd.h>
@@ -26,6 +27,7 @@
 #pragma comment(lib,"xinput9_1_0.lib")
 #endif
 
+
 //-----------------------------------------------------------------------------
 // Function-prototypes
 //-----------------------------------------------------------------------------
@@ -37,8 +39,14 @@ void RenderFrame();
 //-----------------------------------------------------------------------------
 // Defines, constants, and global variables
 //-----------------------------------------------------------------------------
-#define MAX_CONTROLLERS 4  // XInput handles up to 4 controllers 
+#define MAX_CONTROLLERS 4                          // XInput handles up to 4 controllers 
 #define INPUT_DEADZONE  ( 0.24f * FLOAT(0x7FFF) )  // Default to 24% of the +/- 32767 range.   This is a reasonable default value but can be altered if needed.
+#define BUTTON_ONE 3301
+#define BUTTON_TWO 3302
+#define BUTTON_THREE 3303
+#define COMBOBOX1 3304
+#define backgroundColor 0x14FDFD                   //REMIND: Windows' rgb is represent in reverse order!
+#define textColor 0x000000
 
 struct CONTROLLER_STATE
 {
@@ -48,9 +56,11 @@ struct CONTROLLER_STATE
 
 CONTROLLER_STATE g_Controllers[MAX_CONTROLLERS];
 WCHAR   g_szMessage[4][1024] = {0};  //記錄四個搖桿的狀態(XInputGetState拿到的值)
-HWND    g_hWnd;  //主控台視窗控制代碼
-bool    g_bDeadZoneOn = true;  //記錄deadzone開或關
-
+HWND    g_hWnd;                      //主控台視窗控制代碼
+bool    g_bDeadZoneOn = true;        //記錄deadzone開或關
+HINSTANCE  hg_app;                   //記錄button的HINSTANCE
+int		button_flag[3];				 //用來紀錄button有無被clicked
+int     currentFont;                 //記錄font
 
 //-----------------------------------------------------------------------------
 // Name: WinMain()
@@ -65,7 +75,7 @@ int WINAPI wWinMain( _In_ HINSTANCE hInstance, _In_opt_ HINSTANCE, _In_ LPWSTR, 
         return 1;
 
     // Register the window class
-    HBRUSH hBrush = CreateSolidBrush( 0x8e09f5 );
+    HBRUSH hBrush = CreateSolidBrush( backgroundColor );
     WNDCLASSEX wc =  //第二個參數為message的dispatch函式
     {
         sizeof( WNDCLASSEX ), 0, MsgProc, 0L, 0L, hInstance, nullptr,
@@ -77,8 +87,16 @@ int WINAPI wWinMain( _In_ HINSTANCE hInstance, _In_opt_ HINSTANCE, _In_ LPWSTR, 
     // Create the application's window
     g_hWnd = CreateWindow( L"XInputSample", L"Controller Dectector",
                            WS_OVERLAPPED | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX,  //有標題邊框, 可顯示, 有標題列, 標題列有控制開關, 有最小化
-                           CW_USEDEFAULT, CW_USEDEFAULT, 650, 600,
+                           CW_USEDEFAULT, CW_USEDEFAULT, 750, 650,
                            nullptr, nullptr, hInstance, nullptr );
+
+    // Set buttons hInstance
+	for (int i = 0; i < 3; i++)
+		button_flag[i] = 0;
+    hg_app = hInstance;
+
+    //set default font
+    currentFont = 2;
 
     // Init state
     ZeroMemory( g_Controllers, sizeof( CONTROLLER_STATE ) * MAX_CONTROLLERS );
@@ -170,7 +188,7 @@ void RenderFrame()
 
             swprintf_s( sz[i], 1024,
                               L"Controller %u: Connected\n"
-                              L"  Buttons: %s%s%s%s%s%s%s%s%s%s%s%s%s%s\n"
+                              L"  Pressed Buttons: %s%s%s%s%s%s%s%s%s%s%s%s%s%s\n"
                               L"  Left Trigger: %u\n"
                               L"  Right Trigger: %u\n"
                               L"  Left Thumbstick: %d/%d\n"
@@ -226,6 +244,9 @@ void RenderFrame()
 //-----------------------------------------------------------------------------
 LRESULT WINAPI MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam )
 {
+    static HWND buttonA, buttonB, buttonC;
+    HFONT font;
+
     switch( msg )
     {
         case WM_ACTIVATEAPP:
@@ -261,7 +282,126 @@ LRESULT WINAPI MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam )
 
         case WM_CREATE:
         {
-            
+            HFONT font;
+            //create three buttons
+            buttonA = CreateWindow(L"Button" , L"Deadzone On" , WS_VISIBLE | WS_CHILD | BS_PUSHBUTTON,  
+                535, 10, 160, 50, hWnd, (HMENU)BUTTON_ONE, hg_app, NULL);  
+            buttonB = CreateWindow(L"Button" , L"Easy Rotate Off" , WS_VISIBLE | WS_CHILD | BS_PUSHBUTTON,  
+                535, 70, 160, 50, hWnd, (HMENU)BUTTON_TWO, hg_app, NULL);
+            buttonC = CreateWindow(WC_COMBOBOX, TEXT("Fonts"), CBS_SIMPLE | CBS_DROPDOWN | CBS_DROPDOWNLIST | CBS_HASSTRINGS | WS_CHILD | WS_OVERLAPPED | WS_VISIBLE,
+                535, 130, 135, 200, hWnd, NULL, hg_app, NULL);
+
+            // load the combobox with item list.  
+            // Send a CB_ADDSTRING message to load each item
+            TCHAR Fonts[7][16] =  
+            {
+                TEXT("Arial"), TEXT("Times New Roman"), TEXT("Monaco"), TEXT("Impact"), TEXT("Helvetica"), TEXT("Georgia"), TEXT("Palatino")
+            };
+
+            TCHAR A[16]; 
+
+            memset(&A, 0, sizeof(A));       
+            for (int k = 0; k <= 6; k++)
+            {
+                wcscpy_s(A, sizeof(A) / sizeof(TCHAR), (TCHAR*)Fonts[k]);
+
+                // Add string to combobox.
+                SendMessage(buttonC, (UINT)CB_ADDSTRING, (WPARAM)2, (LPARAM)A); 
+            }
+  
+            // Send the CB_SETCURSEL message to display an initial item 
+            // in the selection field  
+            SendMessage(buttonC, CB_SETCURSEL, (WPARAM)3, (LPARAM)0);
+        }
+
+        case WM_COMMAND:
+        {  
+            if (HIWORD(wParam) == CBN_SELCHANGE)
+            // If the user makes a selection from the list:
+            // Send CB_GETCURSEL message to get the index of the selected list item.
+            // Send CB_GETLBTEXT message to get the item.
+            // Display the item in a messagebox.
+            { 
+                int ItemIndex = SendMessage((HWND)lParam, (UINT)CB_GETCURSEL, (WPARAM)0, (LPARAM)0);
+                TCHAR  ListItem[256];
+                (TCHAR) SendMessage((HWND)lParam, (UINT)CB_GETLBTEXT, (WPARAM)ItemIndex, (LPARAM)ListItem);
+                if (ListItem[0] == 'A')
+                {
+                    //MessageBox(hWnd, (LPCWSTR)ListItem, TEXT("Item Selected"), MB_OK);
+                    currentFont = 1;
+                }
+                else if (ListItem[0] == 'T')
+                {
+                    //MessageBox(hWnd, (LPCWSTR)ListItem, TEXT("Item Selected"), MB_OK);
+                    currentFont = 2;
+                }
+                else if (ListItem[0] == 'M')
+                {
+                    currentFont = 3;
+                }
+                else if (ListItem[0] == 'I')
+                {
+                    currentFont = 4;
+                }
+                else if (ListItem[0] == 'H')
+                {
+                    //MessageBox(hWnd, (LPCWSTR)ListItem, TEXT("Item Selected"), MB_OK);
+                    currentFont = 5;
+                }
+                else if (ListItem[0] == 'G')
+                {
+                    currentFont = 6;
+                }
+                else if (ListItem[0] == 'P')
+                {
+                    currentFont = 7;
+                }
+                //MessageBox(hWnd, (LPCWSTR)ListItem, TEXT("Item Selected"), MB_OK);                        
+            }
+
+            switch (LOWORD(wParam))  
+            {  
+                case BUTTON_ONE:
+                    //MessageBox(hwnd, L"您點擊了第一個按鈕。", L"提示", MB_OK | MB_ICONINFORMATION);  
+                    if (button_flag[0] == 0) {
+                        SendMessage((HWND)lParam, WM_SETTEXT, (WPARAM)NULL, (LPARAM)L"Deadzone Off");
+                        button_flag[0] = 1;
+                        g_bDeadZoneOn = FALSE;
+                    }
+				    else if (button_flag[0] == 1) {
+                        SendMessage((HWND)lParam, WM_SETTEXT, (WPARAM)NULL, (LPARAM)L"Deadzone On");
+                        button_flag[0] = 0;
+                        g_bDeadZoneOn = TRUE;
+                    }
+                    break;
+
+                case BUTTON_TWO:
+                    //MessageBox(hwnd, L"您點擊了第二個按鈕。", L"提示", MB_OK | MB_ICONINFORMATION);  
+                    if (button_flag[1] == 0) {
+                        SendMessage((HWND)lParam, WM_SETTEXT, (WPARAM)NULL, (LPARAM)L"Easy Rotate On");
+                        button_flag[1] = 1;
+                    }
+                    else if (button_flag[1] == 1) {
+                        SendMessage((HWND)lParam, WM_SETTEXT, (WPARAM)NULL, (LPARAM)L"Easy Rotate Off");
+                        button_flag[1] = 0;
+                    }  
+                    break;
+
+			    case BUTTON_THREE:
+                    //MessageBox(hwnd, L"您點擊了第三個按鈕。", L"提示", MB_OK | MB_ICONINFORMATION);  
+                    if (button_flag[2] == 0) {
+                        SendMessage((HWND)lParam, WM_SETTEXT, (WPARAM)NULL, (LPARAM)L"Third button clicked");
+                        button_flag[2] = 1;
+                    }
+                    else if (button_flag[2] == 1) {
+                        SendMessage((HWND)lParam, WM_SETTEXT, (WPARAM)NULL, (LPARAM)L"Unclicked third");
+                        button_flag[2] = 0;
+                    }  
+                    break;
+
+                default:
+                    break;
+            }  
         }
 
         case WM_PAINT:
@@ -269,19 +409,30 @@ LRESULT WINAPI MsgProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam )
             // Paint some simple explanation text
             PAINTSTRUCT ps;
             HDC hDC = BeginPaint( hWnd, &ps );
-            SetBkColor( hDC, 0x8E09F3 );
-            SetTextColor( hDC, 0x000000 );
+            SetBkColor( hDC, backgroundColor );
+            SetTextColor( hDC, textColor );
             RECT rect;
             GetClientRect( hWnd, &rect );
 
-            rect.top = 20;
+            TCHAR FontDictionary[7][16] =  
+            {
+                TEXT("Arial"), TEXT("Times New Roman"), TEXT("Monaco"), TEXT("Impact"), TEXT("Helvetica"), TEXT("Georgia"), TEXT("Palatino")
+            };
+ 
+            font = CreateFont(0, 0, 0, 0,
+                            FW_DONTCARE, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_OUTLINE_PRECIS,
+                            CLIP_DEFAULT_PRECIS, CLEARTYPE_QUALITY, VARIABLE_PITCH, FontDictionary[currentFont-1]);
+
+            SelectObject(hDC, font);
+
+            rect.top = 15;
             rect.left = 20;
             DrawText( hDC,
-                      L"This sample displays the state of all 4 XInput controllers\nPress 'D' to toggle dead zone clamping.", -1, &rect, 0 );
+                      L"You can connect upto 4 controllers.\nIf you turn on 'Easy Rotate'\nLeft trigger will represent rotating counter-clockwise\nRight trigger will represent rotating clockwise\nPress 'D' to toggle dead zone clamping.", -1, &rect, 0 );
 
             for( DWORD i = 0; i < MAX_CONTROLLERS; i++ )
             {
-                rect.top = i * 120 + 70;
+                rect.top = i * 120 + 120;
                 rect.left = 20;
                 DrawText( hDC, g_szMessage[i], -1, &rect, 0 );
             }
