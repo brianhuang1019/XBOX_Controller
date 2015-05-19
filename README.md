@@ -16,22 +16,26 @@
   2. How to detect "Rotate".
   3. (Vibration feedback).
 
-**If you want to get whole project, just follow these steps:**
-_step1_
-__make sure you have some necessary things installed:__
-  1. [Visual Studio](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs)(2010 or later recommended)
-  2. [Windows SDK](https://www.microsoft.com/en-us/download/details.aspx?id=8279)(Please install the latest version)
-  3. You need a XBOX controller(of course :p, or you may need this project)
+####If you want to get whole project, just follow these steps:####
 
-_step2_
+__step1__
+
+  _make sure you have some necessary things installed:_
+
+    1. [Visual Studio](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs)(2010 or later recommended)
+    2. [Windows SDK](https://www.microsoft.com/en-us/download/details.aspx?id=8279)(Please install the latest version)
+    3. You need a XBOX controller(of course :p, or you may need this project)
+
+__step2__
 ```git
 git clone https://github.com/brianhuang1019/XBOX_Controller.git XBOX
 ```
-_step3_
+__step3__
 ```
 cd XBOX/XBOX_Controller/C++/SimpleController
 ```
-_step4_
+__step4__
+
 open SimpleController_2012.vcxproj then enter "F5" to build.
   
   
