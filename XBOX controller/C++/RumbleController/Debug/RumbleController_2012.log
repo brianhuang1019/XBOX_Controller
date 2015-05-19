@@ -1,0 +1,13 @@
+﻿已經開始建置於 2015/5/7 下午3:10:22。
+     1>節點 2 (Build 目標) 上的專案 "\\psf\Home\Desktop\csie\Lab\sample code\useful\XInput Win32 Samples\C++\RumbleController\RumbleController_2012.vcxproj"。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W4 /WX- /Od /Oi /Oy- /D WIN32 /D _DEBUG /D DEBUG /D _WINDOWS /D _WIN32_WINNT=0x0600 /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /arch:SSE2 /fp:fast /Zc:wchar_t /Zc:forScope /openmp- /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt  RumbleController.cpp
+         RumbleController.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"\\psf\Home\Desktop\csie\Lab\sample code\useful\XInput Win32 Samples\C++\Debug\RumbleController.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"\\psf\Home\Desktop\csie\Lab\sample code\useful\XInput Win32 Samples\C++\Debug\RumbleController.pdb" /SUBSYSTEM:WINDOWS /LARGEADDRESSAWARE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"\\psf\Home\Desktop\csie\Lab\sample code\useful\XInput Win32 Samples\C++\Debug\RumbleController.lib" /MACHINE:X86 /SAFESEH  Debug\RumbleController.obj
+         RumbleController_2012.vcxproj -> \\psf\Home\Desktop\csie\Lab\sample code\useful\XInput Win32 Samples\C++\Debug\RumbleController.exe
+     1>專案 "\\psf\Home\Desktop\csie\Lab\sample code\useful\XInput Win32 Samples\C++\RumbleController\RumbleController_2012.vcxproj" (Build 目標) 建置完成。
+
+建置成功。
+
+經過時間 00:00:01.46
