@@ -16,8 +16,8 @@
   4. (Vibration feedback).
 
 *If you want to get whole project, just open your terminal and enter following command
-```
-git clone 
+```git
+git clone https://github.com/brianhuang1019/XBOX_Controller.git
 ```
 
 ###### This project is built by visual studio 2012 in C++ by Po-Chih Huang.
