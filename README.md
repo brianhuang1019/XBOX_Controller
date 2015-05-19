@@ -8,12 +8,13 @@
   2. Create a WIN32 windows.
   3. Message controlling & dispatching.
   4. Get controller's data from XInputGetState().
+  5. Buttons.
+  6. Combobox(resposible for font-chooser).
 
 ## TODO list:
-  1. Buttons.
-  2. Output message & format.
-  3. How to detect "Rotate".
-  4. (Vibration feedback).
+  1. Output message & format.
+  2. How to detect "Rotate".
+  3. (Vibration feedback).
 
 **If you want to get whole project, just open your terminal and enter following command**
 ```git
