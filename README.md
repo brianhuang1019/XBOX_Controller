@@ -15,7 +15,7 @@
   3. How to detect "Rotate".
   4. (Vibration feedback).
 
-*If you want to get whole project, just open your terminal and enter following command
+**If you want to get whole project, just open your terminal and enter following command**
 ```git
 git clone https://github.com/brianhuang1019/XBOX_Controller.git
 ```
