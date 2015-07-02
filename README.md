@@ -1,6 +1,6 @@
 # XBOX_Controller
 
-##You can see the report.pdf in the Lab_report folder!!
+__You can see the report.pdf for more detailed information!__
 
 ## Main goal: 
   Use XBOX360 controller to improve control experience of PIONEER, which's a robot in my lab and recently controlled by           computers keyboards. Since there're just 4 directions on the keyboard, we can enjoy exquisiter control using XBOX               controller. Furthermore, some additional novel functionalities are available with XBOX controller.
