@@ -1,0 +1,124 @@
+﻿已經開始建置於 2015/6/29 上午11:59:23。
+     1>節點 2 (Build 目標) 上的專案 "\\psf\Home\Desktop\csie\Lab\sample code\useful\XInput Win32 Samples\C++\SimpleController\SimpleController_2012.vcxproj"。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I\\psf\Home\Desktop\MobileRobots\Aria\include /ZI /nologo /W4 /WX- /Od /Oi /Oy- /D WIN32 /D _DEBUG /D DEBUG /D _WINDOWS /D _WIN32_WINNT=0x0600 /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /arch:SSE2 /fp:fast /Zc:wchar_t /Zc:forScope /openmp- /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt  SimpleController.cpp
+         SimpleController.cpp
+     1>\\psf\home\desktop\csie\lab\sample code\useful\xinput win32 samples\c++\simplecontroller\simplecontroller.cpp : warning C4819: 檔案含有無法在目前字碼頁 (950) 中表示的字元。請以 Unicode 格式儲存檔案以防止資料遺失
+     1>\\psf\home\desktop\mobilerobots\aria\include\arrobot.h(1419): warning C4100: 'doNotSwitchBaud' : 未參考的型式參數
+     1>\\psf\home\desktop\mobilerobots\aria\include\arptz.h(136): warning C4100: 'zoomValue' : 未參考的型式參數
+     1>\\psf\home\desktop\mobilerobots\aria\include\arptz.h(138): warning C4100: 'zoomValue' : 未參考的型式參數
+     1>\\psf\home\desktop\mobilerobots\aria\include\arptz.h(202): warning C4100: 's' : 未參考的型式參數
+     1>\\psf\home\desktop\mobilerobots\aria\include\arptz.h(207): warning C4100: 's' : 未參考的型式參數
+     1>\\psf\home\desktop\mobilerobots\aria\include\arptz.h(246): warning C4100: 'gain' : 未參考的型式參數
+     1>\\psf\home\desktop\mobilerobots\aria\include\arptz.h(248): warning C4100: 'gain' : 未參考的型式參數
+     1>\\psf\home\desktop\mobilerobots\aria\include\arptz.h(254): warning C4100: 'focus' : 未參考的型式參數
+     1>\\psf\home\desktop\mobilerobots\aria\include\arptz.h(256): warning C4100: 'focus' : 未參考的型式參數
+     1>\\psf\home\desktop\mobilerobots\aria\include\arptz.h(261): warning C4100: 'af' : 未參考的型式參數
+     1>\\psf\home\desktop\mobilerobots\aria\include\arptz.h(304): warning C4100: 'packet' : 未參考的型式參數
+     1>\\psf\home\desktop\mobilerobots\aria\include\arsick.h(219): warning C4100: 'minRange' : 未參考的型式參數
+     1>\\psf\home\desktop\mobilerobots\aria\include\arfunctor.h(2846): warning C4121: 'ArRetFunctor1C<Ret,T,P1>' : 成員的記憶體對齊受 pack 影響
+                 with
+                 [
+                     Ret=bool,
+                     T=ArTCMCompassRobot,
+                     P1=ArRobotPacket *
+                 ]
+                 \\psf\home\desktop\mobilerobots\aria\include\artcmcompassrobot.h(62) : 請參閱所要編譯的類別 樣板 具現化 'ArRetFunctor1C<Ret,T,P1>' 的參考
+                 with
+                 [
+                     Ret=bool,
+                     T=ArTCMCompassRobot,
+                     P1=ArRobotPacket *
+                 ]
+     1>\\psf\home\desktop\mobilerobots\aria\include\armodes.h(245): warning C4512: 'ArModeCamera' : 無法產生指派運算子
+                 \\psf\home\desktop\mobilerobots\aria\include\armodes.h(139) : 請參閱 'ArModeCamera' 的宣告
+     1>\\psf\home\desktop\mobilerobots\aria\include\aractionmovementparameters.h(57): warning C4100: 'mapObject' : 未參考的型式參數
+     1>\\psf\home\desktop\mobilerobots\aria\include\arnmeaparser.h(166): warning C4512: 'ArNMEAParser' : 無法產生指派運算子
+                 \\psf\home\desktop\mobilerobots\aria\include\arnmeaparser.h(45) : 請參閱 'ArNMEAParser' 的宣告
+     1>\\psf\home\desktop\mobilerobots\aria\include\arfunctor.h(1951): warning C4121: 'ArFunctor1C<T,P1>' : 成員的記憶體對齊受 pack 影響
+                 with
+                 [
+                     T=ArTCMCompassDirect,
+                     P1=ArNMEAParser::Message
+                 ]
+                 \\psf\home\desktop\mobilerobots\aria\include\artcmcompassdirect.h(73) : 請參閱所要編譯的類別 樣板 具現化 'ArFunctor1C<T,P1>' 的參考
+                 with
+                 [
+                     T=ArTCMCompassDirect,
+                     P1=ArNMEAParser::Message
+                 ]
+     1>\\psf\home\desktop\mobilerobots\aria\include\artcmcompassdirect.h(115): warning C4512: 'ArTCMCompassDirect' : 無法產生指派運算子
+                 \\psf\home\desktop\mobilerobots\aria\include\artcmcompassdirect.h(65) : 請參閱 'ArTCMCompassDirect' 的宣告
+     1>\\psf\home\desktop\mobilerobots\aria\include\arlaserfilter.h(72): warning C4100: 'arg' : 未參考的型式參數
+     1>\\psf\home\desktop\mobilerobots\aria\include\argps.h(560): warning C4512: 'ArGPS' : 無法產生指派運算子
+                 \\psf\home\desktop\mobilerobots\aria\include\argps.h(104) : 請參閱 'ArGPS' 的宣告
+     1>\\psf\home\desktop\mobilerobots\aria\include\arfunctor.h(2846): warning C4121: 'ArRetFunctor1C<Ret,T,P1>' : 成員的記憶體對齊受 pack 影響
+                 with
+                 [
+                     Ret=bool,
+                     T=ArSimulatedGPS,
+                     P1=ArRobotPacket *
+                 ]
+                 \\psf\home\desktop\mobilerobots\aria\include\argps.h(570) : 請參閱所要編譯的類別 樣板 具現化 'ArRetFunctor1C<Ret,T,P1>' 的參考
+                 with
+                 [
+                     Ret=bool,
+                     T=ArSimulatedGPS,
+                     P1=ArRobotPacket *
+                 ]
+     1>\\psf\home\desktop\mobilerobots\aria\include\argps.h(621): warning C4512: 'ArSimulatedGPS' : 無法產生指派運算子
+                 \\psf\home\desktop\mobilerobots\aria\include\argps.h(567) : 請參閱 'ArSimulatedGPS' 的宣告
+     1>\\psf\home\desktop\mobilerobots\aria\include\argps.h(610): warning C4100: 'maxTime' : 未參考的型式參數
+     1>\\psf\home\desktop\mobilerobots\aria\include\arfunctor.h(1951): warning C4121: 'ArFunctor1C<T,P1>' : 成員的記憶體對齊受 pack 影響
+                 with
+                 [
+                     T=ArTrimbleGPS,
+                     P1=ArNMEAParser::Message
+                 ]
+                 \\psf\home\desktop\mobilerobots\aria\include\artrimblegps.h(68) : 請參閱所要編譯的類別 樣板 具現化 'ArFunctor1C<T,P1>' 的參考
+                 with
+                 [
+                     T=ArTrimbleGPS,
+                     P1=ArNMEAParser::Message
+                 ]
+     1>\\psf\home\desktop\mobilerobots\aria\include\artrimblegps.h(83): warning C4512: 'ArTrimbleGPS' : 無法產生指派運算子
+                 \\psf\home\desktop\mobilerobots\aria\include\artrimblegps.h(66) : 請參閱 'ArTrimbleGPS' 的宣告
+     1>\\psf\home\desktop\mobilerobots\aria\include\arfunctor.h(1951): warning C4121: 'ArFunctor1C<T,P1>' : 成員的記憶體對齊受 pack 影響
+                 with
+                 [
+                     T=ArNovatelGPS,
+                     P1=ArNMEAParser::Message
+                 ]
+                 \\psf\home\desktop\mobilerobots\aria\include\arnovatelgps.h(61) : 請參閱所要編譯的類別 樣板 具現化 'ArFunctor1C<T,P1>' 的參考
+                 with
+                 [
+                     T=ArNovatelGPS,
+                     P1=ArNMEAParser::Message
+                 ]
+     1>\\psf\home\desktop\mobilerobots\aria\include\arnovatelgps.h(67): warning C4512: 'ArNovatelGPS' : 無法產生指派運算子
+                 \\psf\home\desktop\mobilerobots\aria\include\arnovatelgps.h(58) : 請參閱 'ArNovatelGPS' 的宣告
+     1>\\psf\home\desktop\mobilerobots\aria\include\arfunctor.h(1951): warning C4121: 'ArFunctor1C<T,P1>' : 成員的記憶體對齊受 pack 影響
+                 with
+                 [
+                     T=ArNovatelSPAN,
+                     P1=ArNMEAParser::Message
+                 ]
+                 \\psf\home\desktop\mobilerobots\aria\include\arnovatelgps.h(86) : 請參閱所要編譯的類別 樣板 具現化 'ArFunctor1C<T,P1>' 的參考
+                 with
+                 [
+                     T=ArNovatelSPAN,
+                     P1=ArNMEAParser::Message
+                 ]
+     1>\\psf\home\desktop\mobilerobots\aria\include\arnovatelgps.h(94): warning C4512: 'ArNovatelSPAN' : 無法產生指派運算子
+                 \\psf\home\desktop\mobilerobots\aria\include\arnovatelgps.h(79) : 請參閱 'ArNovatelSPAN' 的宣告
+     1>\\psf\home\desktop\mobilerobots\aria\include\aractionmovementparametersdebugging.h(55): warning C4100: 'mapObject' : 未參考的型式參數
+     1>\\psf\home\desktop\csie\lab\sample code\useful\xinput win32 samples\c++\simplecontroller\simplecontroller.cpp(793): warning C4819: 檔案含有無法在目前字碼頁 (950) 中表示的字元。請以 Unicode 格式儲存檔案以防止資料遺失
+     1>\\psf\home\desktop\csie\lab\sample code\useful\xinput win32 samples\c++\simplecontroller\simplecontroller.cpp(783): warning C4101: 'font' : 未參考的區域變數
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"\\psf\Home\Desktop\csie\Lab\sample code\useful\XInput Win32 Samples\C++\SimpleController\Debug\SimpleController.exe" /INCREMENTAL /NOLOGO "\\psf\Home\Desktop\ARIA 2.9.0-1 (32-bit)\lib\AriaDebugVC12.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"\\psf\Home\Desktop\csie\Lab\sample code\useful\XInput Win32 Samples\C++\SimpleController\Debug\SimpleController.pdb" /SUBSYSTEM:WINDOWS /LARGEADDRESSAWARE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"\\psf\Home\Desktop\csie\Lab\sample code\useful\XInput Win32 Samples\C++\SimpleController\Debug\SimpleController.lib" /MACHINE:X86 /SAFESEH  Debug\SimpleController.obj
+         SimpleController_2012.vcxproj -> \\psf\Home\Desktop\csie\Lab\sample code\useful\XInput Win32 Samples\C++\SimpleController\Debug\SimpleController.exe
+     1>專案 "\\psf\Home\Desktop\csie\Lab\sample code\useful\XInput Win32 Samples\C++\SimpleController\SimpleController_2012.vcxproj" (Build 目標) 建置完成。
+
+建置成功。
+
+經過時間 00:00:14.21
