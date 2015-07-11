@@ -10,13 +10,12 @@ __You can see the report.pdf for more detailed information!__
   2. Create a WIN32 windows.
   3. Message controlling & dispatching.
   4. Get controller's data from XInputGetState().
-  5. Buttons.
-  6. Combobox(resposible for font-chooser).
+  5. Buttons & Combobox(resposible for font-chooser).
+  6. Turn Input format to Output format(Base on ARIA API).
 
 ## TODO list:
-  1. Output message & format.
-  2. How to detect "Rotate".
-  3. (Vibration feedback).
+  1. How to detect "Rotate".
+  2. (Vibration feedback).
 
 ####If you want to get whole project, just follow these steps:####
 
